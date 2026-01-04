@@ -1,0 +1,15 @@
+async function generateTTS() {
+  const text = document.getElementById("text").value;
+  const gender = document.getElementById("gender").value;
+
+  const response = await fetch("https://your-backend-url/tts", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text, gender })
+  });
+
+  const blob = await response.blob();
+  const audioUrl = URL.createObjectURL(blob);
+
+  document.getElementById("audio").src = audioUrl;
+}
