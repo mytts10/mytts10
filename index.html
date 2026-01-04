@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My TTS Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Text to Speech Converter</h1>
+    <textarea id="text" rows="5" cols="50" placeholder="Type your text here..."></textarea><br><br>
+    <button onclick="speak()">Convert to Speech</button>
+
+    <script>
+        function speak() {
+            let text = document.getElementById("text").value;
+            if(text === "") {
+                alert("Please type some text!");
+                return;
+            }
+            let speech = new SpeechSynthesisUtterance(text);
+            speech.lang = "en-US"; // Change to "hi-IN" for Hindi
+            window.speechSynthesis.speak(speech);
+        }
+    </script>
+</body>
+</html>
